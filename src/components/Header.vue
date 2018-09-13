@@ -292,6 +292,11 @@ h2 {
     margin: 0 10px;
 }
 
+header {
+    position: fixed;
+    width:100%;
+}
+
 @media only screen and (max-width: 965px) {
     .level {  margin-left: 35%!important;  }
     #big-header-icons { margin-left: 0;  min-width: 73px;  }

@@ -16,18 +16,20 @@
 
             <div id="short-name" class="personal-info__el">                
                 <h4>Short name</h4>
-                <p>Tes</p></div>
+                <p>Tes</p>
+            </div>
         </div>
+
         <div class="elements-joined">
             <div id="image" class="personal-info__el">
                 <h4>Image</h4><i class="fa fas fa-cog"></i>
                 <div id="photo2">
-                        <img 
-                            id="photo-img" 
-                            class="ui fluid image" 
-                            src="./../../public/assets/image.png" 
-                            alt="photo-placeholder" />
-                    </div>
+                    <img 
+                        id="photo-img" 
+                        class="ui fluid image" 
+                        src="./../../public/assets/image.png" 
+                        alt="photo-placeholder" />
+                </div>
             </div>
         
                     <div id="occupation" class="personal-info__el shorter-div">                
@@ -46,26 +48,26 @@
 </template>
 
 <script>
+
     export default {
         name: "Classic"
     }
 </script>
 
 <style scoped>
+.main-content {
+    width: 55%;
+}
 
-    .main-content {
-        width: 55%;
-    }
-    .personal-info {
-        display: grid;
-        grid-template-columns: 56px minmax(75px, 70%) 95px;
-        grid-template-rows: 56px;
-        grid-column-gap: 15px;
-        padding: 15px;
-        
-        border-radius: 2px 2px 0 0;	
-        background-color: #DCDCDC;
-    }
+.personal-info {
+    display: grid;
+    grid-template-columns: 56px minmax(75px, 70%) 95px;
+    grid-template-rows: 56px;
+    grid-column-gap: 15px;
+    padding: 15px;
+    border-radius: 2px 2px 0 0;	
+    background-color: #DCDCDC;
+}
 
     .personal-info__el {
         padding: 10px;
@@ -120,6 +122,10 @@
   overflow:hidden;
 }
 
+@media only screen and (max-width: 670px) { 
+
+}
+
     @media only screen and (max-width: 670px) {
         .personal-info {
             grid-template-columns: 56px minmax(75px, auto);
@@ -137,4 +143,33 @@
             display: none;
         }
     }
+    @media only screen and (max-width: 900px) { 
+    .main-content {
+        width: 52vw;
+        margin-left: 1%;
+    }
+}
+@media only screen and (max-width: 782px) { 
+    .main-content {     
+        margin-left: 1%;
+    }
+}
+@media only screen and (max-width: 730px) { 
+    .main-content {     
+        margin-left: 1%;
+        width: 50vw;
+    }
+}
+@media only screen and (max-width: 600px) { 
+    .main-content {
+        width: 93.5vw;
+        margin-left: 2%;
+    }
+}
+@media only screen and (max-width: 424px) { 
+    .main-content {
+        width: 92vw;
+        margin-left: 3%;
+    }
+}
 </style>
