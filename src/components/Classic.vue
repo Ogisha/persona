@@ -34,34 +34,34 @@
                 </section>
             </div>
         
-            <div @click="handleEditFields" id="occupation" class="personal-info__el shorter-div draggable">                
+            <div @click="handleEditFields" id="occupation" class="personal-info__el draggable">                
                 <h4>Occupation</h4>
                 <i class="fa fas fa-cog"></i>
                 <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>Researcher</p>
             </div>
 
-            <div @click="handleEditFields" id="dragingEl6" class="personal-info__el shorter-div draggable">                
+            <div @click="handleEditFields" id="dragingEl6" class="personal-info__el draggable">                
                 <p>
                     <i>Insert element here</i>
                 </p>
             </div>
 
-            <div @click="handleEditFields" id="nationality" class="personal-info__el shorter-div draggable">                
+            <div @click="handleEditFields" id="nationality" class="personal-info__el draggable">                
                 <h4>nationality</h4>
                 <i class="fa fas fa-cog"></i>
                 <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>French</p>
             </div>
 
-            <div @click="handleEditFields" id="maritialStatus" class="personal-info__el shorter-div draggable">                
+            <div @click="handleEditFields" id="maritalStatus" class="personal-info__el draggable">                
                 <h4>Mariatal Status</h4>
                 <i class="fa fas fa-cog"></i>
                 <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>---</p>
             </div>
 
-            <div @click="handleEditFields" id="Age" class="personal-info__el shorter-div draggable">
+            <div @click="handleEditFields" id="Age" class="personal-info__el draggable">
                 <h4>Age</h4>
                 <i class="fa fas fa-cog"></i>
                 <i @click="trashTheDiv" class="fa fas fa-trash"></i>
@@ -184,15 +184,14 @@
                 newel.style.background = "white";
                 newel.style.border = "none";
 
-                let template2 = `
+                let template = `
                             <h4>Testing</h4>
                             <i id="dinSettings" class='fa fas fa-cog'></i>
                             <i id="dinTrash" @click="trashTheDiv" class='fa fas fa-trash' style='display:none; color:#DCDCDC; float: right;margin-top: 2px;'></i>
                             <p>Not defined</p>
                         `;
 
-                let template = "<h4>Testing</h4><i class='fa fas fa-cog'></i><i class='fa fas fa-trash' style='display:none;'></i><p>Not defined</p>";
-                newel.insertAdjacentHTML('afterBegin', template2);
+                newel.insertAdjacentHTML('afterBegin', template);
 
                 let dinSettings = document.getElementById("dinSettings");
                 let dinTrash = document.getElementById("dinTrash");
@@ -296,6 +295,8 @@
     justify-content: center;
     align-items: center;
     display: none;
+    grid-row: span 1;
+    grid-column: span 2;
 }
 
 #dragingEl6 p {
@@ -304,7 +305,9 @@
 }
 
 #mood-images {
-    grid-row: 5;
+    grid-row: span 5;
+    grid-column-start: 1;
+    grid-column: span 1;
 }
 
 .buttons {
@@ -349,8 +352,8 @@
 }
 
 #description {
-    align-self:flex-start;
-    grid-row: 5;
+    grid-column-start: 2;
+    grid-column: span 2;
 }
 
 .personal-info__el {
@@ -376,9 +379,29 @@
     opacity: .6;
 }
 
-.medium {
+#image {
     grid-row: span 3;
     grid-column: span 1;
+}
+
+#occupation, #nationality, #maritalStatus {
+    grid-row: span 1;
+    grid-column: span 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+#age {
+    grid-row: span 1;
+    grid-column: span 1;
+    grid-column-start: 1;
+}
+
+#quote {
+    grid-row: span 3;
+    grid-column: span 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
 }
 
 .elements-joined {
@@ -389,7 +412,7 @@
     padding: 15px;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
-    grid-template-columns: 33% auto;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: dense;
 }
 
@@ -401,25 +424,6 @@
 
 #photo2 {
     margin-top: 7px;
-}
-
-#ocupation {
-    align-self: start;
-}
-
-#quote {
-    align-self: flex-start;
-}
-
-.shorter-div {
-    height: 61px;
-}
-
-.elements-joined:after {
-    content: "";
-    display: table;
-    clear: both;
-    overflow:hidden;
 }
 
 @media only screen and (max-width: 670px) {

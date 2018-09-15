@@ -2,7 +2,7 @@
     <div id="add-element-container">
         <div id="add-top">
             <h3>Add element</h3>
-            <button>&#10799</button>
+            <button>&#10799;</button>
         </div>
 
         <div id="add-main">

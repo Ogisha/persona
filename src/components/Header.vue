@@ -97,7 +97,7 @@
 
 <script>
     import axios from 'axios';
-    
+
     export default {
         name: "Header",
         data() {
@@ -109,6 +109,14 @@
         },
 
         methods: {
+            nameEditTasks() {
+                this.name = this.typing;
+                this.$emit("nameSaved", this.name);
+                document.getElementById("typeName").value = "";
+                this.nameEditMode = false;
+                this.toggleShow();
+            },
+
             toggleShow() {
                 document.getElementById("typeName").classList.toggle("hidden");
                 document.getElementById("editName").classList.toggle("hidden");
@@ -122,18 +130,20 @@
                 this.nameEditMode = true;
             },
             saveNameClicked() {
-                this.name = this.typing;
+                this.nameEditTasks();
                 axios({
                     method: 'post',
                     url: 'https://private-anon-ff5c715acc-smaplypersonastest.apiary-mock.com/personas/personaId/fields',
                     data: this.name,
-                    });
-
-                this.$emit("nameSaved", this.name);
-                document.getElementById("typeName").value = "";
-                this.nameEditMode = false;
-                this.toggleShow();
+                });
             }
+        },
+
+        created() {
+            window.addEventListener('blur', (e) => {
+                if (this.typing != "") 
+                    this.nameEditTasks();
+            }, false);
         }
     }
 </script>
