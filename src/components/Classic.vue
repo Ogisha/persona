@@ -136,141 +136,140 @@
 </template>
 
 <script>
-import Sortable from 'sortablejs';
-import axios from 'axios';
+    import Sortable from 'sortablejs';
+    import axios from 'axios';
 
-export default {
-    name: "Classic",
-    data() {
-        return {
-            toRemove: "",
-            shortName: "Tess"
-        }
-    },
-    props: {
-        personaName: String
-    },
-
-    methods: {
-        handleDragOver(e) {
-            if (e.preventDefault) e.preventDefault();
-            if (e.stopPropagation) e.stopPropagation();
-        },
-        handleDrop(e) {
-            let newel = document.querySelector("#dragingEl6");
-            newel.addEventListener("click", this.handleEditFields, false);
-            newel.innerHTML = "";
-            newel.style.background = "white";
-            newel.style.border = "none";
-
-           let template2 = `
-                    <h4>Testing</h4>
-                    <i id="dinSettings" class='fa fas fa-cog'></i>
-                    <i id="dinTrash" @click="trashTheDiv" class='fa fas fa-trash' style='display:none; color:#DCDCDC; float: right;margin-top: 2px;'></i>
-                    <p>Not defined</p>
-                `;
-
-            let template = "<h4>Testing</h4><i class='fa fas fa-cog'></i><i class='fa fas fa-trash' style='display:none;'></i><p>Not defined</p>";
-            newel.insertAdjacentHTML('afterBegin', template2);
-
-            let dinSettings = document.getElementById("dinSettings");
-            let dinTrash = document.getElementById("dinTrash");
-
-            dinSettings.addEventListener("mouseover", function() {
-                this.style.color = "rgba(0,0,0,.6)";
-                this.style.cursor = "pointer";
-
-            })
-            dinSettings.addEventListener("mouseout", function() {
-                this.style.color = "#DCDCDC";
-            })
-
-                        dinTrash.addEventListener("mouseover", function() {
-                this.style.color = "rgba(0,0,0,.6)";
-                this.style.cursor = "pointer";
-
-            })
-            dinTrash.addEventListener("mouseout", function() {
-                this.style.color = "#DCDCDC";
-            })
-
-            newel.children[2].addEventListener("click", function(){
-                newel.remove();
-});
-            document.getElementById("mood-images").style.gridRow = "5";
-          
-            document.getElementById("description").style.gridRow = "5";
-        },
-        handleEditFields(e) {
-            console.log("clicked");
-            if (e.target.className.slice(0,17) == "personal-info__el") 
-                this.toRemove = e.target;
-            else {
-                this.toRemove = e.target.parentNode;
-
-                while (this.toRemove.nodeName != "DIV") {
-                    this.toRemove = this.toRemove.parentNode;
-                }
+    export default {
+        name: "Classic",
+        data() {
+            return {
+                toRemove: ""
             }
+        },
 
-            let newArray = document.getElementsByClassName("personal-info__el");
+        props: {
+            personaName: String
+        },
 
-            for (let i = 2; i < newArray.length; i++) {
-                if (this.toRemove.id == newArray[i].id) {
-                    newArray[i].children[1].style.display = "none";
-                    newArray[i].children[2].style.display = "initial";
-                    newArray[i].style.transform = "scale(1.05)";
-                    newArray[i].style.transition = "transform 0.2s ease-in";
+        methods: {
+            adjustStyles(a, b) {
+                a.addEventListener("mouseover", function() {
+                    this.style.color = "rgba(0,0,0,.6)";
+                    this.style.cursor = "pointer";
+                });
 
-                }
+                a.addEventListener("mouseout", function() {
+                    this.style.color = "#DCDCDC";
+                });
+
+                b.addEventListener("mouseover", function() {
+                    this.style.color = "rgba(0,0,0,.6)";
+                    this.style.cursor = "pointer";
+                });
+
+                b.addEventListener("mouseout", function() {
+                    this.style.color = "#DCDCDC";
+                });
+            },
+
+            handleDragOver(e) {
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+            },
+
+            handleDrop(e) {
+                let newel = document.querySelector("#dragingEl6");
+                newel.addEventListener("click", this.handleEditFields, false);
+                newel.innerHTML = "";
+                newel.style.background = "white";
+                newel.style.border = "none";
+
+                let template2 = `
+                            <h4>Testing</h4>
+                            <i id="dinSettings" class='fa fas fa-cog'></i>
+                            <i id="dinTrash" @click="trashTheDiv" class='fa fas fa-trash' style='display:none; color:#DCDCDC; float: right;margin-top: 2px;'></i>
+                            <p>Not defined</p>
+                        `;
+
+                let template = "<h4>Testing</h4><i class='fa fas fa-cog'></i><i class='fa fas fa-trash' style='display:none;'></i><p>Not defined</p>";
+                newel.insertAdjacentHTML('afterBegin', template2);
+
+                let dinSettings = document.getElementById("dinSettings");
+                let dinTrash = document.getElementById("dinTrash");
+                this.adjustStyles(dinSettings, dinTrash);
+
+                newel.children[2].addEventListener("click", function(){
+                    newel.remove();
+                });
+            },
+
+            handleEditFields(e) {
+                if (e.target.className.slice(0,17) == "personal-info__el") 
+                    this.toRemove = e.target;
 
                 else {
-                    if (newArray[i].children[1])
-                        newArray[i].children[1].style.display = "initial";
-                    if (newArray[i].children[2])
-                        newArray[i].children[2].style.display = "none";
-
-                    newArray[i].style.transform = "scale(1)";
-                    newArray[i].style.transition = "transform 0.2s ease-out";
+                    this.toRemove = e.target.parentNode;
+                    while (this.toRemove.nodeName != "DIV") {
+                        this.toRemove = this.toRemove.parentNode;
+                    }
                 }
+
+                let newArray = document.getElementsByClassName("personal-info__el");
+
+                for (let i = 2; i < newArray.length; i++) {
+                    if (this.toRemove.id == newArray[i].id) {
+                        newArray[i].children[1].style.display = "none";
+                        newArray[i].children[2].style.display = "initial";
+                        newArray[i].style.transform = "scale(1.05)";
+                        newArray[i].style.transition = "transform 0.2s ease-in";
+
+                    }
+
+                    else {
+                        if (newArray[i].children[1])
+                            newArray[i].children[1].style.display = "initial";
+                        if (newArray[i].children[2])
+                            newArray[i].children[2].style.display = "none";
+
+                        newArray[i].style.transform = "scale(1)";
+                        newArray[i].style.transition = "transform 0.2s ease-out";
+                    }
+                }
+            },
+
+            trashTheDiv(e) {
+                setTimeout(() => {
+                    e.target.parentNode.remove();
+                },100);
+                clearTimeout();
             }
         },
-        trashTheDiv(e) {
-            setTimeout(() => {
-                e.target.parentNode.remove();
-            },100);
-            clearTimeout();
+
+        computed: {
+            getInitials() {
+                return this.personaName.slice(0,3);
+            }
+        },
+
+        mounted() {
+            axios.get("https://private-anon-ff5c715acc-smaplypersonastest.apiary-mock.com/personas/personaId/columns")
+                .then(response => console.log(response));
+
+            const el = document.getElementById('drag');
+            
+            Sortable.create(el, {
+                sort: true,
+                disabled: false,
+                animation: 150,
+                draggable: ".draggable"
+            })
+
+            const element = document.getElementById("dragingEl6");
+
+            element.addEventListener("dragover", this.handleDragOver, false);
+            element.addEventListener("drop", this.handleDrop, false);
         }
- 
-    },
-
-    computed: {
-        getInitials() {
-            this.shortName = this.personaName.slice(0,3);
-            console.log(this.shortName);
-            return this.shortName;
-        }
-    },
-
-    mounted() {
-        axios.get("https://private-anon-ff5c715acc-smaplypersonastest.apiary-mock.com/personas/personaId/columns")
-            .then(response => console.log(response));
-
-        const el = document.getElementById('drag');
-        
-        Sortable.create(el, {
-            sort: true,
-            disabled: false,
-            animation: 150,
-            draggable: ".draggable"
-        })
-
-        const element = document.getElementById("dragingEl6");
-
-        element.addEventListener("dragover", this.handleDragOver, false);
-        element.addEventListener("drop", this.handleDrop, false);
     }
-}
 </script>
 
 <style scoped>
@@ -347,7 +346,6 @@ export default {
     padding: 15px;
     border-radius: 2px 2px 0 0;	
     background-color: #DCDCDC;
-
 }
 
 #description {
@@ -372,7 +370,6 @@ export default {
 #photo-img {
     max-height: 100%;
 }
-
 
 .text-formating {
     padding: 5px 0;
