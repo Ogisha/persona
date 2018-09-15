@@ -33,6 +33,7 @@
 let hoverBorder = "1px dashed #999";
 let normalBorder = "1px solid white";
 let draggingElement;
+let newDiv;
 
 //  THE EVENT LISTENERS
 
@@ -40,6 +41,8 @@ let handleDragStart = (e) => {
     draggingElement = e.target;
     e.target.style.border = hoverBorder;
     e.target.style.transform = "scale(0.9)";
+    newDiv = document.getElementById("dragingEl6");
+    newDiv.style.display = "initial";
 }
 
 let handleDragEnd = (e) => {
@@ -174,6 +177,21 @@ h1 {
     font-size:40px;
     height:30px;
     margin: 0;
+}
+
+#dragingEl6 {
+    border: 1px dashed #9CDBFB;
+    border-radius: 2px;
+    background-color: #F0F8FC;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#dragingEl6 p {
+    color: #646E6E;
+    font-size: 14px;
 }
 
 @media only screen and (max-width: 782px) { 

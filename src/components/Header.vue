@@ -295,6 +295,7 @@ h2 {
 header {
     position: fixed;
     width:100%;
+    z-index: 1000;
 }
 
 @media only screen and (max-width: 965px) {

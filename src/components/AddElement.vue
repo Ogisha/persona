@@ -17,7 +17,6 @@
 </template>
 
 <script>
-
 import Elements from './Elements';
 
 export default {
@@ -29,6 +28,11 @@ export default {
 </script>
 
 <style>
+    .fa-cog {
+    color: #DCDCDC;
+    float: right;
+    margin-top: 2px; 
+}
 #add-element-container {
     width: 350px;
     background: white;
