@@ -43,12 +43,18 @@ let handleDragStart = (e) => {
     e.target.style.transform = "scale(0.9)";
     newDiv = document.getElementById("dragingEl6");
     newDiv.style.display = "initial";
+
 }
 
 let handleDragEnd = (e) => {
+    if (newDiv.childNodes.length == 1)
+        newDiv.style.display = "none";
+
     e.target.style.opacity= "1";
     e.target.style.border = normalBorder;
     draggingElement.style.transform = "scale(1)";
+    console.log(newDiv.childNodes.length);
+  
 }
 
 let handleDragOver = (e) => {
@@ -68,6 +74,7 @@ let handleDragLeave = (e) => {
 }
 
 let handleDrop = (e) => {
+
     e.target.style.border = normalBorder;
     e.target.style.opacity= "1";
     if (e.target.id == draggingElement.id) 
@@ -146,7 +153,20 @@ h1 {
     align-self: end;
     color: #646E6E;
 }
+.fa-cog, .fa-trash {
+    color: #DCDCDC;
+    float: right;
+    margin-top: 2px;
+}
 
+.fa-trash {
+    display: none;
+}
+
+.fa-cog:hover, .fa-trash:hover {
+    color: rgba(0,0,0,.6);
+    cursor: pointer;
+}
 .description {
     color: #646E6E;	
     font-family: "Source Sans Pro";	

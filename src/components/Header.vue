@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header id="header">
         <div id="nav-top" class="ui small menu">
             <a href="http://google.com" class="ui image">
                 <img id="logo-img" class="ui rounded image" src="./../../public/assets/logo.png">
@@ -48,11 +48,11 @@
 
         <div id="nav-bottom">
             <div class="nav-left">
-                    <i v-if="!nameEditMode" class="big user circle icon nav-bottom-icon"></i>
-                    <h2 v-if="!nameEditMode">Persona <b>{{name || "Tess"}}</b></h2>
-                    <input @change="gettyping" id="typeName" type="text" class="hidden" />
-                    <a id="editName" @click="editClicked"><i class="large edit icon edit-name"></i></a>
-                    <a id="saveName" @click="saveNameClicked" class="hidden"><i class="large check circle icon edit-name"></i></a>
+                <i v-if="!nameEditMode" class="big user circle icon nav-bottom-icon"></i>
+                <h2 v-if="!nameEditMode">Persona <b>{{name || "Tess"}}</b></h2>
+                <input @change="gettyping" id="typeName" type="text" class="hidden" />
+                <a id="editName" @click="editClicked"><i class="large edit icon edit-name"></i></a>
+                <a id="saveName" @click="saveNameClicked" class="hidden"><i class="large check circle icon edit-name"></i></a>
             </div>
 
             <div class="nav-right">
@@ -96,6 +96,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    
     export default {
         name: "Header",
         data() {
@@ -105,6 +107,7 @@
                 name: ""
             }
         },
+
         methods: {
             toggleShow() {
                 document.getElementById("typeName").classList.toggle("hidden");
@@ -120,14 +123,16 @@
             },
             saveNameClicked() {
                 this.name = this.typing;
+                axios({
+                    method: 'post',
+                    url: 'https://private-anon-ff5c715acc-smaplypersonastest.apiary-mock.com/personas/personaId/fields',
+                    data: this.name,
+                    });
+
+                this.$emit("nameSaved", this.name);
                 document.getElementById("typeName").value = "";
                 this.nameEditMode = false;
                 this.toggleShow();
-            }
-        },
-        computed: {
-            getInitials() {
-                return this.name.slice(0,3);
             }
         }
     }
@@ -313,7 +318,6 @@ header {
 @media only screen and (max-width: 810px) {
     #big-header-icons { margin-left: 0;  min-width: 47px;  }
     #big-header-icons span {  display:none }
-
 }
 
 @media only screen and (max-width: 618px) {
@@ -322,11 +326,12 @@ header {
 }
 
 @media only screen and (max-width: 600px) {
-    #big-header-icons {  min-width: 35px;  font-size: .8em;}
+    #big-header-icons {  min-width: 35px;  font-size: .8em;  }
     #big-header-icons span {  display:none }
     .edit-name {  margin-left: 0px;  }
     h2 {  margin-left: 0px;  }
 }
+
 @media only screen and (max-width: 425px) {
     .right {  margin: 4px auto!important;  }
     #nav-top {  padding-top: 4px;  }

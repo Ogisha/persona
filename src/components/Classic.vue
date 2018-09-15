@@ -11,53 +11,67 @@
 
             <div id="persona-name" class="personal-info__el">
                 <h4>Persona name</h4>
-                <p>Tessa <span>(Tes)</span></p>
+                <p>{{personaName}} <span>({{getInitials}})</span></p>
             </div>
 
             <div id="short-name" class="personal-info__el">                
                 <h4>Short name</h4>
-                <p>Tes</p>
+                <p>{{getInitials}}</p>
             </div>
         </div>
 
         <div id="drag" class="elements-joined">
-            <div @click="handleEditFileds" id="image" class="personal-info__el medium">
-                <h4>Image</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
-                <div id="photo2">
+            <div @click="handleEditFields" id="image" class="personal-info__el medium">
+                <h4>Image</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
+                <section id="photo2">
                     <img 
                         id="photo-img" 
                         class="ui fluid image" 
                         src="./../../public/assets/image.png" 
                         alt="photo-placeholder" />
-                </div>
+                </section>
             </div>
         
-            <div @click="handleEditFileds(this)" id="occupation" class="personal-info__el shorter-div draggable">                
-                <h4>Occupation</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="occupation" class="personal-info__el shorter-div draggable">                
+                <h4>Occupation</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>Researcher</p>
             </div>
 
-            <div @click="handleEditFileds" id="dragingEl6" class="personal-info__el shorter-div draggable">                
-            <p><i>Insert element here</i></p>
-                </div>
+            <div @click="handleEditFields" id="dragingEl6" class="personal-info__el shorter-div draggable">                
+                <p>
+                    <i>Insert element here</i>
+                </p>
+            </div>
 
-            <div @click="handleEditFileds" id="nationality" class="personal-info__el shorter-div draggable">                
-                <h4>nationality</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="nationality" class="personal-info__el shorter-div draggable">                
+                <h4>nationality</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>French</p>
             </div>
 
-            <div @click="handleEditFileds" id="maritialStatus" class="personal-info__el shorter-div draggable">                
-                <h4>Mariatal Status</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="maritialStatus" class="personal-info__el shorter-div draggable">                
+                <h4>Mariatal Status</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>---</p>
             </div>
 
-            <div @click="handleEditFileds" id="Age" class="personal-info__el shorter-div draggable">
-                <h4>Age</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="Age" class="personal-info__el shorter-div draggable">
+                <h4>Age</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>28</p>
             </div>
 
-            <div @click="handleEditFileds" id="quote" class="personal-info__el rowsNo2 draggable">                
-                <h4>Quote</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="quote" class="personal-info__el draggable">                
+                <h4>Quote</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <section class="text-formating">
                     <section class="ui icon buttons">
                         <button class="ui basic button"><i class="bold icon"></i></button>
@@ -72,23 +86,29 @@
                 <p>"Life may not be the party  we hoped for, but while we're here, we should dance."</p>
             </div>
 
-            <div @click="handleEditFileds" id="gender" class="personal-info__el draggable">
-                <h4>Gender</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="gender" class="personal-info__el draggable">
+                <h4>Gender</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 <p>Not defined</p>
             </div>
 
-            <div @click="handleEditFileds" id="mood-images" class="personal-info__el imgs">
-                <h4>Mood Images</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="mood-images" class="personal-info__el imgs">
+                <h4>Mood Images</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
 
-                <div class="flexed-photos">
+                <section class="flexed-photos">
                     <img src="./../../public/assets/placeholder.jpeg">
                     <img src="./../../public/assets/image.png">
                     <img src="./../../public/assets/image.png">
-                </div>
+                </section>
             </div>
 
-            <div @click="handleEditFileds" id="description" class="personal-info__el occupation draggable">
-                <h4>Description</h4><i class="fa fas fa-cog"></i><i class="fa fas fa-trash"></i>
+            <div @click="handleEditFields" id="description" class="personal-info__el occupation draggable">
+                <h4>Description</h4>
+                <i class="fa fas fa-cog"></i>
+                <i @click="trashTheDiv" class="fa fas fa-trash"></i>
                 
                 <section class="text-formating">
                     <section class="ui icon buttons">
@@ -117,9 +137,20 @@
 
 <script>
 import Sortable from 'sortablejs';
+import axios from 'axios';
 
 export default {
     name: "Classic",
+    data() {
+        return {
+            toRemove: "",
+            shortName: "Tess"
+        }
+    },
+    props: {
+        personaName: String
+    },
+
     methods: {
         handleDragOver(e) {
             if (e.preventDefault) e.preventDefault();
@@ -127,46 +158,104 @@ export default {
         },
         handleDrop(e) {
             let newel = document.querySelector("#dragingEl6");
+            newel.addEventListener("click", this.handleEditFields, false);
             newel.innerHTML = "";
             newel.style.background = "white";
             newel.style.border = "none";
 
-            newel.insertAdjacentHTML('afterBegin', ' <h4>Gender</h4><i class="fa fas fa-cog"></i><p>Not defined</p></div>');
-          document.getElementById("mood-images").style.gridRow = "5";
+           let template2 = `
+                    <h4>Testing</h4>
+                    <i id="dinSettings" class='fa fas fa-cog'></i>
+                    <i id="dinTrash" @click="trashTheDiv" class='fa fas fa-trash' style='display:none; color:#DCDCDC; float: right;margin-top: 2px;'></i>
+                    <p>Not defined</p>
+                `;
+
+            let template = "<h4>Testing</h4><i class='fa fas fa-cog'></i><i class='fa fas fa-trash' style='display:none;'></i><p>Not defined</p>";
+            newel.insertAdjacentHTML('afterBegin', template2);
+
+            let dinSettings = document.getElementById("dinSettings");
+            let dinTrash = document.getElementById("dinTrash");
+
+            dinSettings.addEventListener("mouseover", function() {
+                this.style.color = "rgba(0,0,0,.6)";
+                this.style.cursor = "pointer";
+
+            })
+            dinSettings.addEventListener("mouseout", function() {
+                this.style.color = "#DCDCDC";
+            })
+
+                        dinTrash.addEventListener("mouseover", function() {
+                this.style.color = "rgba(0,0,0,.6)";
+                this.style.cursor = "pointer";
+
+            })
+            dinTrash.addEventListener("mouseout", function() {
+                this.style.color = "#DCDCDC";
+            })
+
+            newel.children[2].addEventListener("click", function(){
+                newel.remove();
+});
+            document.getElementById("mood-images").style.gridRow = "5";
           
             document.getElementById("description").style.gridRow = "5";
         },
-        handleEditFileds(e) {
-            let testni;
-            console.log(e.target);
-                    
-            if (e.target.className == "personal-info__el")
-                testni = e.target;
-
+        handleEditFields(e) {
+            console.log("clicked");
+            if (e.target.className.slice(0,17) == "personal-info__el") 
+                this.toRemove = e.target;
             else {
-                testni = e.target.parentNode;
+                this.toRemove = e.target.parentNode;
 
-            while (testni.nodeName != "DIV") {
-                testni = testni.parentNode;
+                while (this.toRemove.nodeName != "DIV") {
+                    this.toRemove = this.toRemove.parentNode;
+                }
             }
+
+            let newArray = document.getElementsByClassName("personal-info__el");
+
+            for (let i = 2; i < newArray.length; i++) {
+                if (this.toRemove.id == newArray[i].id) {
+                    newArray[i].children[1].style.display = "none";
+                    newArray[i].children[2].style.display = "initial";
+                    newArray[i].style.transform = "scale(1.05)";
+                    newArray[i].style.transition = "transform 0.2s ease-in";
+
+                }
+
+                else {
+                    if (newArray[i].children[1])
+                        newArray[i].children[1].style.display = "initial";
+                    if (newArray[i].children[2])
+                        newArray[i].children[2].style.display = "none";
+
+                    newArray[i].style.transform = "scale(1)";
+                    newArray[i].style.transition = "transform 0.2s ease-out";
+                }
+            }
+        },
+        trashTheDiv(e) {
+            setTimeout(() => {
+                e.target.parentNode.remove();
+            },100);
+            clearTimeout();
         }
+ 
+    },
 
-
-             testni = testni.getAttribute("id");
-            let niz = document.getElementsByClassName("fa-cog");
-             let broj = document.getElementsByClassName("fa-cog").length;
-             console.log(testni);
-             console.log(broj);
-
-             for (let i = 0; i < broj; i++) {
-                    console.log(niz[i].getAttribute("id"));
+    computed: {
+        getInitials() {
+            this.shortName = this.personaName.slice(0,3);
+            console.log(this.shortName);
+            return this.shortName;
         }
-    }
-            
-           /* testni.style.display="none";*/
     },
 
     mounted() {
+        axios.get("https://private-anon-ff5c715acc-smaplypersonastest.apiary-mock.com/personas/personaId/columns")
+            .then(response => console.log(response));
+
         const el = document.getElementById('drag');
         
         Sortable.create(el, {
@@ -195,9 +284,9 @@ export default {
     display: none;
 }
 
-.fa-cog:hover {
-    color: rgba(0,0,0,.7);
-
+.fa-cog:hover, .fa-trash:hover {
+    color: rgba(0,0,0,.6);
+    cursor: pointer;
 }
 
 #dragingEl6 {
@@ -213,6 +302,10 @@ export default {
 #dragingEl6 p {
     color: #646E6E;
     font-size: 14px;
+}
+
+#mood-images {
+    grid-row: 5;
 }
 
 .buttons {
@@ -254,6 +347,12 @@ export default {
     padding: 15px;
     border-radius: 2px 2px 0 0;	
     background-color: #DCDCDC;
+
+}
+
+#description {
+    align-self:flex-start;
+    grid-row: 5;
 }
 
 .personal-info__el {
@@ -280,10 +379,6 @@ export default {
     opacity: .6;
 }
 
-.rowsNo2 {
-    grid-row: span 2;
-}
-
 .medium {
     grid-row: span 3;
     grid-column: span 1;
@@ -298,6 +393,7 @@ export default {
     grid-column-gap: 15px;
     grid-row-gap: 15px;
     grid-template-columns: 33% auto;
+    grid-auto-flow: dense;
 }
 
 .fa-cog {
@@ -312,6 +408,10 @@ export default {
 
 #ocupation {
     align-self: start;
+}
+
+#quote {
+    align-self: flex-start;
 }
 
 .shorter-div {

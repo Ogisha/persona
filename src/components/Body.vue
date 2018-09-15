@@ -1,20 +1,24 @@
 <template>
     <main>
-        <Classic />
+        <Classic :personaName="personaName"/>
         <AddElement />
     </main>
 </template>
 <script>
-import Classic from './Classic';
-import AddElement from './AddElement';
+    import Classic from './Classic';
+    import AddElement from './AddElement';
 
-export default {
-    name: "Body",
-    components: {
-        Classic,
-        AddElement
+    export default {
+        name: "Body",
+        props: {
+            personaName: String
+        },
+        
+        components: {
+            Classic,
+            AddElement
+        }
     }
-}
 </script>
 
 <style scoped>
