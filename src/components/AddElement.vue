@@ -8,30 +8,84 @@
         <div id="add-main">
             <h2 id="add-header">Add element to persona</h2>
             <p>Click or drag & drop one of the element types below to add it to the persona.<br />
-                Click on the <span><i class="fa fas fa-cog"></i></span> icon of the each element to edit it's settings.<br />
+                Click on the <span><i id="static-icon" class="fa fas fa-cog"></i></span> icon of the each element to edit it's settings.<br />
                 You can reorder the elements by dragging them.
             </p>
             <Elements />
+
+            <div id="contact-us">
+                <span>
+                    <a href="mailto:"><i class="fa fas fa-info-circle"></i></a>
+                </span>
+
+                <div id="feedback">
+                    <p><b>Missing Something?</b><br />
+                    Contact us to let us know which element types you would like to use in your personas.</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import Elements from './Elements';
+    import Elements from './Elements';
 
-export default {
-    name: "AddElement",
-    components: {
-        Elements
+    export default {
+        name: "AddElement",
+        components: {
+            Elements
+        }
     }
-}
 </script>
 
 <style>
+#contact-us {
+    margin: 300px 24px 100px 24px;
+    display: flex;
+    border-radius: 2px;
+}
+
+#contact-us span {
+    background-color: rgba(58,183,247,0.25);
+    box-shadow: 0 5px 30px 0 rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact-us span i {
+    color: #3AB7F7;
+    font-size: 20px;
+    padding: 0 12px;
+}
+
+#feedback {
+    background-color: #F0F8FC;
+    padding: 4%;
+    color: #646E6E;
+    font-family: "Source Sans Pro";
+    font-style: italic;
+}
+
+#feedback p {
+    font-size: 12px;
+    line-height: 17px;
+}
+
+#feedback p b {
+    font-size: 13px;
+}
+
 .fa-cog {
     color: #DCDCDC;
     float: right;
     margin-top: 2px; 
+}
+
+#static-icon {
+    color: #646E6E;
+    float:none;
+    margin:0;
 }
 
 #add-element-container {
@@ -125,7 +179,7 @@ p > span {
 }
 
 @media only screen and (max-width: 600px) { 
-    #add-element-container {  width: 93.5vw;  margin-left: 2%;  position: relative;  top: 20px;  }
+    #add-element-container {  width: 93.5vw;  margin-left: 4.5%;  position: relative;  top: 20px;  }
 }
 
 @media only screen and (max-width: 424px) { 
